@@ -49,6 +49,8 @@ if isfolder("NexerHub") and isfolder("NexerHub/DieOfDeath") and isfolder("NexerH
 makefolder("NexerHub/DieOfDeath/Assets/Chases")
 end
 end
+asset_counter = 24
+temp_msg.Text = "Loading Core Assets... ("..asset_counter.."/24)"
 end
 
 if HaveWorkspaceAccess() and not IsFile("NexerHub/DieOfDeath/Assets/LMS/data.luau") then CreateFile("NexerHub/DieOfDeath/Assets/LMS/data.luau", [[return {
