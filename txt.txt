@@ -1,0 +1,564 @@
+if getgenv then
+getgenv().dod_developer_key = "Nexer"
+else
+_G.dod_developer_key = "Nexer"
+end
+
+local asset_counter = 0
+local temp_msg = Instance.new("Message",game.CoreGui)
+temp_msg.Text = "Loading Core Assets... ("..asset_counter.."/24)"
+
+-- Functions were created fully by me. No AI contributions.
+local Execute = function(f, ...) return function(f, ...) return task.spawn(f, ...) end end
+local HaveWorkspaceAccess = function() if isfile and writefile and readfile and isfolder and makefolder and (getcustomasset or get_custom_asset) then return true end return false end
+local CreateFile = function(f,c) writefile(f,c) end
+local IsFile = function(f) return isfile(f) end
+local GetFile = function(f,m) local gca = (getcustomasset or get_custom_asset); return ((m=="gca" and (gca(f))) or readfile(f)) end
+local TableToLuauString = function(tbl,showkeys) local h_1 = ""; h_1 = "return {"..h_1; for i,v in pairs(tbl) do h_1 = h_1..'\n"'..v..'";' end; h_1 = h_1.."\n}"; local h_2 = ""; h_2 = "return {"..h_2; for i,v in pairs(tbl) do h_2 = h_2..'\n["'..i..'"] = "'..v..'";' end; h_2 = h_2.."\n}"; return ((showkeys and h_2) or h_1) end
+local InsertElement = function(tf, element) local temp_table = loadstring(tostring(GetFile(tf,"rf")))(); table.insert(temp_table,element); CreateFile(tf, TableToLuauString(temp_table,false)) end
+local RemoveElement = function(tf, element) local temp_table = loadstring(tostring(GetFile(tf,"rf")))(); for i,v in pairs(temp_table) do if v == element then temp_table[i]=nil end end; CreateFile(tf, TableToLuauString(temp_table,false)) end
+--local InsertElement_test = function(tf, element) local temp_table = loadstring(tostring(GetFile(tf,"rf")))(); temp_table[element] = value; CreateFile(tf, TableToLuauString(temp_table,false)) end
+
+if HaveWorkspaceAccess() then
+if not isfolder("NexerHub") then
+makefolder("NexerHub")
+repeat task.wait(.1) until isfolder("NexerHub")
+makefolder("NexerHub/DieOfDeath")
+repeat task.wait(.1) until isfolder("NexerHub/DieOfDeath")
+makefolder("NexerHub/DieOfDeath/Assets")
+repeat task.wait(.1) until isfolder("NexerHub/DieOfDeath/Assets")
+makefolder("NexerHub/DieOfDeath/Assets/LMS")
+makefolder("NexerHub/DieOfDeath/Assets/Chases")
+elseif isfolder("NexerHub") and not isfolder("NexerHub/DieOfDeath") then
+makefolder("NexerHub/DieOfDeath")
+repeat task.wait(.1) until isfolder("NexerHub/DieOfDeath")
+makefolder("NexerHub/DieOfDeath/Assets")
+repeat task.wait(.1) until isfolder("NexerHub/DieOfDeath/Assets")
+makefolder("NexerHub/DieOfDeath/Assets/LMS")
+makefolder("NexerHub/DieOfDeath/Assets/Chases")
+elseif isfolder("NexerHub") and isfolder("NexerHub/DieOfDeath") and not isfolder("NexerHub/DieOfDeath/Assets") then
+makefolder("NexerHub/DieOfDeath/Assets")
+repeat task.wait(.1) until isfolder("NexerHub/DieOfDeath/Assets")
+makefolder("NexerHub/DieOfDeath/Assets/LMS")
+makefolder("NexerHub/DieOfDeath/Assets/Chases")
+elseif isfolder("NexerHub") and isfolder("NexerHub/DieOfDeath") and isfolder("NexerHub/DieOfDeath/Assets") and (not isfolder("NexerHub/DieOfDeath/Assets/LMS") or not isfolder("NexerHub/DieOfDeath/Assets/Chases")) then
+if isfolder("NexerHub") and isfolder("NexerHub/DieOfDeath") and isfolder("NexerHub/DieOfDeath/Assets") and not isfolder("NexerHub/DieOfDeath/Assets/LMS") then
+makefolder("NexerHub/DieOfDeath/Assets/LMS")
+end
+if isfolder("NexerHub") and isfolder("NexerHub/DieOfDeath") and isfolder("NexerHub/DieOfDeath/Assets") and not isfolder("NexerHub/DieOfDeath/Assets/Chases") then
+makefolder("NexerHub/DieOfDeath/Assets/Chases")
+end
+end
+end
+
+if HaveWorkspaceAccess() and not IsFile("NexerHub/DieOfDeath/Assets/LMS/data.luau") then CreateFile("NexerHub/DieOfDeath/Assets/LMS/data.luau", [[return {
+    "One Bounce";
+    "Showtime";
+    "Omega's Final Stand";
+    "A Retro Soul";
+    "Teapot Palace Tour";
+    "Careless";
+    "Vigilante Shootdown";
+    "Eternity V2";
+    "Hero";
+}]])
+local temp_table = {
+    "One Bounce";
+    "Showtime";
+    "Omega's Final Stand";
+    "A Retro Soul";
+    "Teapot Palace Tour";
+    "Careless";
+    "Vigilante Shootdown";
+    "Eternity V2";
+    "Hero";
+}
+for i,v in pairs(temp_table) do
+CreateFile("NexerHub/DieOfDeath/Assets/LMS/"..v..".mp3",game:HttpGet("https://raw.githubusercontent.com/NewNexer/NexerHub/refs/heads/main/DOD/Assets/"..(string.gsub(v, " ", "%%20"))..".mp3"))
+asset_counter += 1
+temp_msg.Text = "Loading Core Assets... ("..asset_counter.."/24)"
+end
+end
+if HaveWorkspaceAccess() and not IsFile("NexerHub/DieOfDeath/Assets/Chases/data.luau") then CreateFile("NexerHub/DieOfDeath/Assets/Chases/data.luau", [[return {
+    "A God with No Time";
+    "Derptastic";
+    "Omega's Final Stand";
+    "FAKEOUT";
+    "HELLFIRE V2";
+    "MISO";
+    "Orchestra";
+    "Pretence";
+    "Screw Time";
+    "Middle Big Brother";
+}]])
+local temp_table = {
+    "A God with No Time";
+    "Derptastic";
+    "Omega's Final Stand";
+    "FAKEOUT";
+    "HELLFIRE V2";
+    "MISO";
+    "Orchestra";
+    "Pretence";
+    "Screw Time";
+    "Middle Big Brother";
+}
+for i,v in pairs(temp_table) do
+CreateFile("NexerHub/DieOfDeath/Assets/Chases/"..v..".mp3",game:HttpGet("https://raw.githubusercontent.com/NewNexer/NexerHub/refs/heads/main/DOD/Assets/"..(string.gsub(v, " ", "%%20"))..".mp3"))
+asset_counter += 1
+temp_msg.Text = "Loading Core Assets... ("..asset_counter.."/24)"
+end
+end
+
+Instance.new("Folder",game:GetService("CoreGui")).Name = "DOD_Assets"
+
+function ConvertDropdownValue(tbl)
+if type(tbl) == "table" then
+for _,element in ipairs(tbl) do
+return tostring(element)
+end
+else
+return tostring(tbl)
+end
+end
+
+local WebHandler = {}
+function WebHandler:OpenRBX(url)
+game:GetService("GuiService"):BroadcastNotification(game:GetService("HttpService"):JSONEncode({["title"] = "Roblox", ["presentationStyle"] = 2, ["visible"] = true, ["url"] = tostring(url)}), 20)
+end
+temp_msg.Text = "Loading Modules... (0/2)"
+local Encryptor = loadstring(game:HttpGet("https://raw.githubusercontent.com/NewNexer/Encryption-Center/refs/heads/main/Main.luau"))()
+temp_msg.Text = "Loading Modules... (1/2)"
+local MainModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/NewNexer/NexerHub/refs/heads/main/DOD/Module.luau"))()
+temp_msg.Text = "Loading Modules... (2/2)"
+
+function RequestModule(module)
+local result = nil
+local Success, Error = pcall(function()
+result = require(module)
+end)
+if Success then
+return result
+elseif not Success then
+return nil
+end
+end
+
+local GetRequestMethod = function()
+local iqnd = request or http_request or HttpPost or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or (KRNL and KRNL.request) or (Xeno and Xeno.request) or (game and game.HttpPost)
+if iqnd then
+return iqnd
+else
+return nil
+end
+end
+function CopyLink(link)
+local url = tostring(link)
+setclipboard(url)
+Notify("Success!", "Copied Link!", 4, true)
+end
+function OpenLink(link)
+local url = tostring(link)
+if WebHandler then
+local suc, err = pcall(function() WebHandler:OpenRBX(url) end) if not suc then CopyLink(url) end
+else
+CopyLink(url)
+end
+end
+
+temp_msg.Text = "Loading Rayfield..."
+local Rayfield
+local RAYFIELD_SUCCESS, RAYFIELD_FAIL = pcall(function()
+Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+end)
+if not RAYFIELD_SUCCESS then
+local RAYFIELD_SUCCESS, RAYFIELD_FAIL = pcall(function()
+Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua"))()
+end)
+if not RAYFIELD_SUCCESS then
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Failed to launch rayfield.",
+	Text = "Please check your internet connection, or try using VPN.",
+  Icon = "rbxassetid://125704683916878",
+	Duration = 10,
+})
+return
+end
+end
+temp_msg:Destroy()
+
+function Notify(title, content, time, mode)
+time = time or 4
+mode = mode or false or warn
+if mode == true then
+img = 136186846844342
+elseif mode == false then
+img = 71508738660632
+elseif mode == warn then
+img = 9441432403
+end
+Rayfield:Notify({
+	Title = title,
+	Content = content,
+	Duration = time,
+	Image = img,
+	Actions = {},
+})
+end
+
+function DestroyRayfield()
+task.spawn(function()
+pcall(function()
+Window:Destroy()
+end)
+pcall(function()
+Rayfield:Destroy()
+end)
+pcall(function()
+game.CoreGui.Rayfield:Destroy()
+end)
+pcall(function()
+game.CoreGui.RayField:Destroy()
+end)
+pcall(function()
+game.CoreGui.OldRayfield:Destroy()
+end)
+pcall(function()
+game.CoreGui.OldRayField:Destroy()
+end)
+end)
+end
+
+local Window = Rayfield:CreateWindow({
+   Name = ""..((getgenv and getgenv().dod_developer_key) or ((_G.dod_developer_key ~= nil and _G.dod_developer_key) or "Unknown")).." Hub : Die Of Death",
+   Icon = 0,    
+   LoadingTitle = "NH:DOD",
+   LoadingSubtitle = "by nexer",
+   Theme = "Amethyst",
+   DisableRayfieldPrompts = true,
+   DisableBuildWarnings = true,
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = "",
+      FileName = ""
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+   KeySystem = false,
+   KeySettings = {
+      Title = "Verify yourself firstly!",
+      Subtitle = "Key Needed!",
+      Note = "The key is ''cheese''",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"cheese"}
+   }
+})
+
+
+pcall(function()
+local Announcements = Window:CreateTab("Announce",0)
+Announcements:CreateParagraph({Title = "Warning!", Content = "Recently there were multiple skidded scripts of mine hub. The great example of this are oshub, nyxer hub and others. Those so called ''hubs'' are full copy pastes of mine script. They can't deny it."})
+Announcements:CreateSection("")
+Announcements:CreateParagraph({Title = "Hi there!", Content = "Script Version: 2.3 ( WORK IN PROGRESS, EXCEPT A LOT OF BUGS )\n\nThis script was fully recoded and fixed. Thank you for using my script. ❤️\n\nAlso join our discord server for early updates, free premium access and many other things..."})
+Announcements:CreateButton({Name = "Copy Discord Server Link"; Callback = function()
+setclipboard(tostring("https://discord.gg/7u5GRNw3xn"))
+Notify("Success!", "Copied Link!", 3, true)
+end; })
+end)
+
+
+local LocalPlayer, LP = game.Players.LocalPlayer, game.Players.LocalPlayer
+local Character, Char
+local HumanoidRootPart, HRP
+local Humanoid, Hum
+pcall(function()
+Character, Char = LocalPlayer.Character, LocalPlayer.Character
+end)
+pcall(function()
+HumanoidRootPart, HRP = Character.HumanoidRootPart, Character.HumanoidRootPart
+end)
+pcall(function()
+Humanoid, Hum = Character.Humanoid, Character.Humanoid
+end)
+
+LocalPlayer.CharacterAdded:Connect(function()
+pcall(function()
+Character, Char = nil, nil
+HumanoidRootPart, HRP = nil, nil
+Humanoid, Hum = nil, nil
+task.wait()
+repeat task.wait() until LocalPlayer.Character
+Character, Char = LocalPlayer.Character, LocalPlayer.Character
+task.wait()
+repeat task.wait() until Character:FindFirstChild("HumanoidRootPart")
+HumanoidRootPart, HRP = Character.HumanoidRootPart, Character.HumanoidRootPart
+task.wait()
+repeat task.wait() until Character:FindFirstChild("Humanoid")
+Humanoid, Hum = Character.Humanoid, Character.Humanoid
+end)
+end)
+
+pcall(function()
+StaminaModule = RequestModule(LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainGui"):WaitForChild("Client"):WaitForChild("Modules"):WaitForChild("Movement"))
+end)
+
+function SetStaminaProperty(property, value)
+if property == "MaxStamina" then
+Char:SetAttribute("MaxStamina", value)
+elseif property == "Stamina" then
+if StaminaModule then
+StaminaModule["Stamina"] = value
+end
+elseif property == "Fatigue" then
+Char:SetAttribute("Fatigue", value)
+elseif property == "WalkSpeed" then
+Hum.WalkSpeed = value
+elseif property == "SprintSpeed" then
+Char:SetAttribute("SprintSpeed", value)
+elseif property == "WalkSpeed" then
+Char:SetAttribute("WalkSpeed", value)
+elseif property == "CanJump" then
+if value == true then Hum.JumpPower = 50 else Hum.JumpPower = 0 end
+end
+end
+
+local Tab_1 = Window:CreateTab("Stamina",0)
+
+Tab_1:CreateParagraph({Title = "Stamina", Content = "You can change your stamina properties here."})
+
+Tab_1:CreateSection("Fast Functions")
+
+Tab_1:CreateButton({Name = "Infinite Stamina"; Callback = function()
+SetStaminaProperty("MaxStamina", (1/0))
+SetStaminaProperty("Stamina", (1/0))
+end; })
+
+Tab_1:CreateButton({Name = "Become Fast"; Callback = function()
+Humanoid.WalkSpeed = 50
+SetStaminaProperty("SprintSpeed", 70)
+end; })
+
+Tab_1:CreateButton({Name = "Enable/Disable Jump"; Callback = function()
+if Hum.JumpPower == 0 then
+SetStaminaProperty("CanJump", true)
+else
+SetStaminaProperty("CanJump", false)
+end
+end; })
+
+Tab_1:CreateToggle({Name = "No Stamina Loss"; CurrentValue = false; Callback = function(Value)
+NoStaminaLoss = Value
+if NoStaminaLoss == true then
+repeat task.wait(0.003)
+if Character and Character:GetAttribute("MaxStamina") then
+SetStaminaProperty("Stamina", Character:GetAttribute("MaxStamina"))
+end
+until NoStaminaLoss == false
+end
+end; })
+
+Tab_1:CreateToggle({Name = "No Fatigue"; CurrentValue = false; Callback = function(Value)
+NoFatigue = Value
+if NoFatigue == true then
+repeat task.wait(0.003)
+if Character and Character:GetAttribute("Fatigue") and Character:GetAttribute("Fatigue") == true then
+SetStaminaProperty("Fatigue", false)
+end
+until NoFatigue == false
+end
+end; })
+
+Tab_1:CreateSection("Advanced")
+
+Tab_1:CreateInput({Name = "Max Stamina"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = true; Callback = function(Value)
+SetStaminaProperty("MaxStamina", tonumber(Value))
+end; })
+
+Tab_1:CreateInput({Name = "Stamina"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = true; Callback = function(Value)
+SetStaminaProperty("Stamina", tonumber(Value))
+end; })
+
+Tab_1:CreateInput({Name = "Walk Speed"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = true; Callback = function(Value)
+SetStaminaProperty("WalkSpeed", tonumber(Value))
+end; })
+
+Tab_1:CreateInput({Name = "Sprint Speed"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = true; Callback = function(Value)
+SetStaminaProperty("SprintSpeed", tonumber(Value))
+end; })
+
+Tab_1:CreateSection("Auto Injection")
+local AI_MaxStamina, AI_WalkSpeed, AI_SprintSpeed
+
+Tab_1:CreateLabel("Stamina settings will automatically be applied to your character 21.5 seconds after the round starts.")
+
+Tab_1:CreateToggle({Name = "Auto Inject"; CurrentValue = false; Callback = function(Value)
+AutoInjectStamina = Value
+end; })
+
+Tab_1:CreateInput({Name = "Max Stamina"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = false; Callback = function(Value)
+AI_MaxStamina = Value
+end; })
+
+Tab_1:CreateInput({Name = "Walk Speed"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = false; Callback = function(Value)
+AI_WalkSpeed = Value
+end; })
+
+Tab_1:CreateInput({Name = "Sprint Speed"; PlaceholderText = "Type Here!"; NumbersOnly = true; OnEnter = true; RemoveTextAfterFocusLost = false; Callback = function(Value)
+AI_SprintSpeed = Value
+end; })
+
+game:GetService("Workspace"):WaitForChild("GameAssets"):WaitForChild("Teams"):WaitForChild("Survivor").ChildAdded:Connect(function()
+task.wait()
+if AutoInjectStamina == true then
+task.wait(21.5)
+pcall(function()
+SetStaminaProperty("MaxStamina", AI_MaxStamina)
+end)
+pcall(function()
+SetStaminaProperty("Stamina", AI_MaxStamina)
+end)
+pcall(function()
+SetStaminaProperty("WalkSpeed", AI_WalkSpeed)
+end)
+pcall(function()
+SetStaminaProperty("SprintSpeed", AI_SprintSpeed)
+end)
+end
+end)
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+local Tab_2 = Window:CreateTab("Emotes",0)
+Tab_2:CreateParagraph({Title = "Emotes", Content = "Functions that are related to emotes."})
+
+Tab_2:CreateSection("ITZZZZ PARTY TIME!!!!")
+
+Tab_2:CreateButton({Name = "Open Emote Selection"; Callback = function()
+LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainGui"):WaitForChild("EmoteSelection").Visible = true
+LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainGui"):WaitForChild("EmoteSelection").Active = true
+end; })
+
+Tab_2:CreateButton({Name = "Use Dance"; Callback = function()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteEvents"):WaitForChild("Emote"):FireServer("Dance")
+end; })
+
+Tab_2:CreateButton({Name = "Use Squingle"; Callback = function()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteEvents"):WaitForChild("Emote"):FireServer("Squingle")
+end; })
+
+Tab_2:CreateButton({Name = "Use Gangnam Style"; Callback = function()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteEvents"):WaitForChild("Emote"):FireServer("Gangnam Style")
+end; })
+
+Tab_2:CreateButton({Name = "Use PBJ"; Callback = function()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteEvents"):WaitForChild("Emote"):FireServer("PBJ")
+end; })
+
+Tab_2:CreateButton({Name = "Use Tornado"; Callback = function()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteEvents"):WaitForChild("Emote"):FireServer("Tornado")
+end; })
+
+Tab_2:CreateButton({Name = "Use Rainbow Waves (CLIENT VFX)"; Callback = function()
+local anim = Instance.new("Animation")
+anim.AnimationId = "rbxassetid://75513960644342"
+local planim = Humanoid:LoadAnimation(anim)
+planim:Play()
+local song = Instance.new("Sound")
+song.Volume = 1.5
+song.Looped = true
+song.SoundId = "rbxassetid://137048834753046"
+song.Parent = HumanoidRootPart
+song:Play()
+local PE1 = Instance.new("ParticleEmitter")
+PE1.Texture = "rbxassetid://13425686092"
+PE1.Rate = 50
+PE1.Lifetime = NumberRange.new(1, 1)
+PE1.Speed = NumberRange.new(5, 15)
+PE1.Size = NumberSequence.new(0.4)
+PE1.LightEmission = 1
+PE1.LightInfluence = 1
+
+PE1.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
+	ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255, 128, 0)),
+	ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 0)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)),
+	ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0, 0, 255)),
+	ColorSequenceKeypoint.new(0.83, Color3.fromRGB(128, 0, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 255))
+})
+
+PE1.Transparency = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 0),
+	NumberSequenceKeypoint.new(0, 0.613),
+	NumberSequenceKeypoint.new(0, 1),
+	NumberSequenceKeypoint.new(1, 0)
+})
+
+PE1.Shape = Enum.ParticleEmitterShape.Box
+PE1.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+PE1.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+PE1.ShapePartial = 1
+
+PE1.SpreadAngle = Vector2.new(360, 360)
+PE1.EmissionDirection = Enum.NormalId.Top
+
+PE1.Parent = HumanoidRootPart
+
+PE1.Orientation = Enum.ParticleOrientation.VelocityParallel
+PE1.Acceleration = Vector3.new(-15, -15, -15)
+
+PE1.Squash = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 0),
+	NumberSequenceKeypoint.new(0.5, 1),
+	NumberSequenceKeypoint.new(1, 0)
+})
+
+
+local PE2 = Instance.new("ParticleEmitter")
+PE2.Texture = "rbxassetid://1057939773"
+PE2.Rate = 5
+PE2.Lifetime = NumberRange.new(0.5, 0.5)
+PE2.Speed = NumberRange.new(0.01, 0.01)
+PE2.Size = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 0.5),
+	NumberSequenceKeypoint.new(1, 10),
+	NumberSequenceKeypoint.new(1, 1)
+})
+PE2.LightEmission = 1
+PE2.LightInfluence = 1
+PE2.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
+	ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255, 128, 0)),
+	ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 0)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)),
+	ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0, 0, 255)),
+	ColorSequenceKeypoint.new(0.83, C
